@@ -267,9 +267,8 @@ const markaRegjistruar = () => {
         await market.set({price:  topologjia() + dizajniWebit() + produktetNeWeb() + hedhjaProdukteveEcommerce() + platforma() + pagesa() + gjuhetWeb() + hedhjaMaterialeveWeb() + faqetNeWeb() + hostDomain() + rendesiaSEO() + elementetNeWeb() + markaRegjistruar() + setiFotografikNeMuaj() + frekuencaPostimeveMediaJaves() + biznesitInevojitet() + vendiPromovimit()})
         await market.save();
         const mailOptions = {
-
             from: req.body.email,
-            to: `${process.env.email} ${req.body.email}`,
+            to: process.env.email,
             subject: 'Marketing',
             html: `
             <table>
@@ -713,11 +712,11 @@ const markaRegjistruar = () => {
          await posts.set({price:  topologjia() + dizajniWebit() + produktetNeWeb() + hedhjaProdukteveEcommerce() + platforma() + pagesa() + gjuhetWeb() + hedhjaMaterialeveWeb() + faqetNeWeb() + hostDomain() + rendesiaSEO() + elementetNeWeb() + markaRegjistruar() + setiFotografikNeMuaj() + frekuencaPostimeveMediaJaves() + biznesitInevojitet() + vendiPromovimit()})
         await posts.save();
         res.send(posts);
+
         const mailOptions = {
 
             from: req.body.email,
-            to: process.env.email,
-            to: req.body.email,
+            to: process.env.email ,
             subject: 'Website',
             html: `
             <table>
@@ -736,6 +735,27 @@ const markaRegjistruar = () => {
             </tr>
             </tbody>
             </table>
+            <h3 style="text-align:center;color:dodgerblue">Marketing</h3>
+            <div style="display:flex">
+            <p><b>Frekuenca e postimeve ne media gjate javes:</b></p>
+            <p>${req.body.frekuencaPostimeveMediaJaves} here</p>
+            </div>
+            <div style="display:flex">
+            <p><b>Seti fotografrik ne muaj:</b></p>
+            <p>${req.body.setiFotografikNeMuaj}</p>
+            </div>
+            <div style="display:flex">
+            <p><b>A e do marken te regjistruar:</b></p>
+            <p>${req.body.markaRegjistruar}</p>
+            </div>
+            <div style="display:flex">
+            <p><b>Biznesit i nevojitet:</b></p>
+            <p>${req.body.biznesitInevojitet}</p>
+            </div>
+            <div style="display:flex">
+            <p><b>Vendi i promovimit:</b></p>
+            <p>${req.body.vendiPromovimit}</p>
+            </div>
             <h3 style="text-align:center;color:dodgerblue">Website</h3>
             <div style="display:flex">
             <p><b>Topologjia:</b></p>
@@ -769,30 +789,9 @@ const markaRegjistruar = () => {
             <p><b>Ne web do te kete element si: </b></p>
             <p>${req.body.elementetNeWeb.includes('') ? ['Nuk dua element shtes'] : req.body.elementetNeWeb}</p>
             </div>
-            <h3 style="text-align:center;color:dodgerblue">Marketing</h3>
-            <div style="display:flex">
-            <p><b>Frekuenca e postimeve ne media gjate javes:</b></p>
-            <p>${req.body.frekuencaPostimeveMediaJaves} here</p>
-            </div>
-            <div style="display:flex">
-            <p><b>Seti fotografrik ne muaj:</b></p>
-            <p>${req.body.setiFotografikNeMuaj}</p>
-            </div>
-            <div style="display:flex">
-            <p><b>A e do marken te regjistruar:</b></p>
-            <p>${req.body.markaRegjistruar}</p>
-            </div>
-            <div style="display:flex">
-            <p><b>Biznesit i nevojitet:</b></p>
-            <p>${req.body.biznesitInevojitet}</p>
-            </div>
-            <div style="display:flex">
-            <p><b>Vendi i promovimit:</b></p>
-            <p>${req.body.vendiPromovimit}</p>
-            </div>
             <div style="display:flex;background-color:green;width:fit-content;color:white;">
-            <p><b>Price: </b></p>
-            <p>${posts.price}$</p>
+            <p><b>Price:</b></p>
+            <p>${posts.price} $</p>
             </div>
             `,
         }
@@ -802,7 +801,7 @@ const markaRegjistruar = () => {
             to: req.body.email,
             subject: 'Website',
             html: `
-          <div style="display:flex;background-color:green;width:fit-content;color:white;">
+         <div>
             <p>${posts.price} $</p>
             </div>
             `,
@@ -823,7 +822,7 @@ const markaRegjistruar = () => {
             }
     console.log(posts)
         })
-       await transporter.sendMail(mailClient,function(err,info){
+        await transporter.sendMail(mailClient,function(err,info){
 
             if(err){
                 res.status(500).send({
@@ -837,11 +836,10 @@ const markaRegjistruar = () => {
                 })
                 console.log('Thank you')
             }
-
+    console.log(posts)
         })
-        console.log(posts);
     }catch(e){
-        res.status(400).send(e)
+        res.send(e)
     }
 
 })
