@@ -735,27 +735,6 @@ const markaRegjistruar = () => {
             </tr>
             </tbody>
             </table>
-            <h3 style="text-align:center;color:dodgerblue">Marketing</h3>
-            <div style="display:flex">
-            <p><b>Frekuenca e postimeve ne media gjate javes:</b></p>
-            <p>${req.body.frekuencaPostimeveMediaJaves} here</p>
-            </div>
-            <div style="display:flex">
-            <p><b>Seti fotografrik ne muaj:</b></p>
-            <p>${req.body.setiFotografikNeMuaj}</p>
-            </div>
-            <div style="display:flex">
-            <p><b>A e do marken te regjistruar:</b></p>
-            <p>${req.body.markaRegjistruar}</p>
-            </div>
-            <div style="display:flex">
-            <p><b>Biznesit i nevojitet:</b></p>
-            <p>${req.body.biznesitInevojitet}</p>
-            </div>
-            <div style="display:flex">
-            <p><b>Vendi i promovimit:</b></p>
-            <p>${req.body.vendiPromovimit}</p>
-            </div>
             <h3 style="text-align:center;color:dodgerblue">Website</h3>
             <div style="display:flex">
             <p><b>Topologjia:</b></p>
@@ -788,6 +767,27 @@ const markaRegjistruar = () => {
             <div style="display:flex">
             <p><b>Ne web do te kete element si: </b></p>
             <p>${req.body.elementetNeWeb.includes('') ? ['Nuk dua element shtes'] : req.body.elementetNeWeb}</p>
+            </div>
+            <h3 style="text-align:center;color:dodgerblue">Marketing</h3>
+            <div style="display:flex">
+            <p><b>Frekuenca e postimeve ne media gjate javes:</b></p>
+            <p>${req.body.frekuencaPostimeveMediaJaves} here</p>
+            </div>
+            <div style="display:flex">
+            <p><b>Seti fotografrik ne muaj:</b></p>
+            <p>${req.body.setiFotografikNeMuaj}</p>
+            </div>
+            <div style="display:flex">
+            <p><b>A e do marken te regjistruar:</b></p>
+            <p>${req.body.markaRegjistruar}</p>
+            </div>
+            <div style="display:flex">
+            <p><b>Biznesit i nevojitet:</b></p>
+            <p>${req.body.biznesitInevojitet}</p>
+            </div>
+            <div style="display:flex">
+            <p><b>Vendi i promovimit:</b></p>
+            <p>${req.body.vendiPromovimit}</p>
             </div>
             <div style="display:flex;background-color:green;width:fit-content;color:white;">
             <p><b>Price:</b></p>
@@ -832,7 +832,7 @@ const markaRegjistruar = () => {
             }else{
                 res.send({
                     success: true,
-                    messagge: 'Thank you'
+                    messagge: 'Thank youUUUU'
                 })
                 console.log('Thank you')
             }
