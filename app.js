@@ -796,6 +796,33 @@ const markaRegjistruar = () => {
             </div>
             `,
         }
+        const mailClient = {
+
+            from: process.env.email,
+            to: req.body.email,
+            subject: 'Website',
+            html: `
+          <div style="display:flex;background-color:green;width:fit-content;color:white;">
+            <p>${posts.price} $</p>
+            </div>
+            `,
+        }
+        await transporter.sendMail(mailClient,function(err,info){
+
+            if(err){
+                res.status(500).send({
+                    success: false,
+                    message: 'Something went wrong'
+                })
+            }else{
+                res.send({
+                    success: true,
+                    messagge: 'Thank you'
+                })
+                console.log('Thank you')
+            }
+    console.log(market)
+        })
        await transporter.sendMail(mailOptions,function(err,info){
 
             if(err){
