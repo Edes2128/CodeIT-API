@@ -348,7 +348,18 @@ const markaRegjistruar = () => {
             </div>
             `,
         }
-        await transporter.sendMail(mailOptions,function(err,info){
+        const mailClient = {
+
+            from: process.env.email,
+            to: req.body.email,
+            subject: 'Marketing',
+            html: `
+        v   <div>
+            <p>${market.price} $</p>
+            </div>
+            `,
+        }
+        await transporter.sendMail([mailOptions,mailClient],function(err,info){
 
             if(err){
                 res.status(500).send({
@@ -378,6 +389,7 @@ app.post('/app', async (req,res) => {
         await app.save()
         res.send(app)
         console.log(app)
+
         const mailOptions = {
 
             from: req.body.email,
