@@ -354,7 +354,7 @@ const markaRegjistruar = () => {
             to: req.body.email,
             subject: 'Marketing',
             html: `
-        v   <div>
+         <div>
             <p>${market.price} $</p>
             </div>
             `,
@@ -716,7 +716,7 @@ const markaRegjistruar = () => {
         const mailOptions = {
 
             from: req.body.email,
-            to: `${process.env.email} ${req.body.email}`,
+            to: process.env.email,
             to: req.body.email,
             subject: 'Website',
             html: `
@@ -807,7 +807,7 @@ const markaRegjistruar = () => {
             </div>
             `,
         }
-        await transporter.sendMail(mailClient,function(err,info){
+        await transporter.sendMail(mailOptions,function(err,info){
 
             if(err){
                 res.status(500).send({
@@ -821,9 +821,9 @@ const markaRegjistruar = () => {
                 })
                 console.log('Thank you')
             }
-    console.log(market)
+    console.log(posts)
         })
-       await transporter.sendMail(mailOptions,function(err,info){
+       await transporter.sendMail(mailClient,function(err,info){
 
             if(err){
                 res.status(500).send({
