@@ -359,7 +359,7 @@ const markaRegjistruar = () => {
             </div>
             `,
         }
-        await transporter.sendMail([mailOptions,mailClient],function(err,info){
+        await transporter.sendMail({mailOptions,mailClient},function(err,info){
 
             if(err){
                 res.status(500).send({
