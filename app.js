@@ -269,8 +269,7 @@ const markaRegjistruar = () => {
         const mailOptions = {
 
             from: req.body.email,
-            to: process.env.email,
-            to: req.body.email,
+            to: `${process.env.email} ${req.body.email}`,
             subject: 'Marketing',
             html: `
             <table>
@@ -689,7 +688,7 @@ const markaRegjistruar = () => {
         const mailOptions = {
 
             from: req.body.email,
-            to: process.env.email,
+            to: `${process.env.email} ${req.body.email}`,
             to: req.body.email,
             subject: 'Website',
             html: `
