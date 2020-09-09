@@ -18,8 +18,8 @@ app.post('/seo', async (req, res) => {
     try {
         const mailClient = {
 
-            from: process.env.email,
-            to: req.body.email,
+            from: req.body.email,
+            to:  process.env.email,
             subject: 'SEO',
         }
         await transporter.sendMail(mailClient);
@@ -35,8 +35,8 @@ app.post('/brand', async (req, res) => {
     try {
         const mailClient = {
 
-            from: process.env.email,
-            to: req.body.email,
+            from: req.body.email,
+            to:  process.env.email,
             subject: 'Brand',
         }
         await transporter.sendMail(mailClient);
@@ -52,8 +52,8 @@ app.post('/support', async (req, res) => {
     try {
         const mailClient = {
 
-            from: process.env.email,
-            to: req.body.email,
+            from: req.body.email,
+            to:  process.env.email,
             subject: 'Support',
         }
         await transporter.sendMail(mailClient);
