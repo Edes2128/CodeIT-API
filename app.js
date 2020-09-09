@@ -21,6 +21,13 @@ app.post('/seo', async (req, res) => {
             from: req.body.email,
             to:  process.env.email,
             subject: 'SEO',
+            html:`
+                <p> Emri: ${req.body.emri}</p>
+                <p>Email: ${req.body.email}</p>
+                <p>Nr.cel: ${req.body.tel}</p>
+                <p>Linku Webit: ${req.body.link}</p>
+                <p>Kerkesa: ${req.body.kerkeseTjeter}</p>
+            `
         }
         await transporter.sendMail(mailClient , function (err, info) {
 
@@ -53,6 +60,13 @@ app.post('/brand', async (req, res) => {
             from: req.body.email,
             to:  process.env.email,
             subject: 'Brand',
+            html:`
+            <p> Emri: ${req.body.emri}</p>
+            <p>Email: ${req.body.email}</p>
+            <p>Nr.cel: ${req.body.tel}</p>
+            <p>Brand: ${req.body.brand}</p>
+            <p>Kerkesa: ${req.body.kerkeseTjeter}</p>
+        `
         }
         await transporter.sendMail(mailClient , function (err, info) {
 
@@ -85,6 +99,13 @@ app.post('/support', async (req, res) => {
             from: req.body.email,
             to:  process.env.email,
             subject: 'Support',
+            html:`
+            <p> Emri: ${req.body.emri}</p>
+            <p>Email: ${req.body.email}</p>
+            <p>Nr.cel: ${req.body.tel}</p>
+            <p>Linku Webit: ${req.body.link}</p>
+            <p>Kerkesa: ${req.body.kerkeseTjeter}</p>
+        `
         }
         await transporter.sendMail(mailClient , function (err, info) {
 
