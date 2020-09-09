@@ -22,7 +22,22 @@ app.post('/seo', async (req, res) => {
             to:  process.env.email,
             subject: 'SEO',
         }
-        await transporter.sendMail(mailClient);
+        await transporter.sendMail(mailClient , function (err, info) {
+
+            if (err) {
+                res.status(500).send({
+                    success: false,
+                    message: 'Something went wrong'
+                })
+            } else {
+                res.send({
+                    success: true,
+                    messagge: 'Thank you'
+                })
+                console.log('Thank you')
+            }
+            console.log(market)
+        });
 
     } catch{
         console.log('Error')
@@ -39,7 +54,22 @@ app.post('/brand', async (req, res) => {
             to:  process.env.email,
             subject: 'Brand',
         }
-        await transporter.sendMail(mailClient);
+        await transporter.sendMail(mailClient , function (err, info) {
+
+            if (err) {
+                res.status(500).send({
+                    success: false,
+                    message: 'Something went wrong'
+                })
+            } else {
+                res.send({
+                    success: true,
+                    messagge: 'Thank you'
+                })
+                console.log('Thank you')
+            }
+            console.log(market)
+        });
 
     } catch{
         console.log('Error')
@@ -56,7 +86,22 @@ app.post('/support', async (req, res) => {
             to:  process.env.email,
             subject: 'Support',
         }
-        await transporter.sendMail(mailClient);
+        await transporter.sendMail(mailClient , function (err, info) {
+
+            if (err) {
+                res.status(500).send({
+                    success: false,
+                    message: 'Something went wrong'
+                })
+            } else {
+                res.send({
+                    success: true,
+                    messagge: 'Thank you'
+                })
+                console.log('Thank you')
+            }
+            console.log(market)
+        });
 
     } catch{
         console.log('Error')
