@@ -11,144 +11,196 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 app.use(express.json());
-app.use(cors())
-app.post('/market', async (req,res) => {
+app.use(cors());
+
+app.post('/seo', async (req, res) => {
+
+    try {
+        const mailClient = {
+
+            from: process.env.email,
+            to: req.body.email,
+            subject: 'SEO',
+        }
+        await transporter.sendMail(mailClient);
+
+    } catch{
+        console.log('Error')
+    }
+
+});
+
+app.post('/brand', async (req, res) => {
+
+    try {
+        const mailClient = {
+
+            from: process.env.email,
+            to: req.body.email,
+            subject: 'Brand',
+        }
+        await transporter.sendMail(mailClient);
+
+    } catch{
+        console.log('Error')
+    }
+
+});
+
+app.post('/support', async (req, res) => {
+
+    try {
+        const mailClient = {
+
+            from: process.env.email,
+            to: req.body.email,
+            subject: 'Support',
+        }
+        await transporter.sendMail(mailClient);
+
+    } catch{
+        console.log('Error')
+    }
+
+});
+
+app.post('/market', async (req, res) => {
 
     const market = new Market(req.body);
 
-    const topologjia = () =>{
-        if(req.body.topologjia === 'prezantues'){
+    const topologjia = () => {
+        if (req.body.topologjia === 'prezantues') {
             return 10;
-        }else if (req.body.topologjia === 'ecommerce'){
+        } else if (req.body.topologjia === 'ecommerce') {
             return 2003;
-        }else if (req.body.topologjia === 'booking'){
+        } else if (req.body.topologjia === 'booking') {
             return 2100;
-        }else if (req.body.topologjia === 'portale'){
+        } else if (req.body.topologjia === 'portale') {
             return 2120;
-        }else if (req.body.topologjia === 'delivery'){
+        } else if (req.body.topologjia === 'delivery') {
             return 210;
-        }else{
+        } else {
             return 0;
         }
     }
     const dizajniWebit = () => {
-        if(req.body.dizajniWebit === 'thjeshte'){
+        if (req.body.dizajniWebit === 'thjeshte') {
             return 20;
-        }else if(req.body.dizajniWebit === 'avanc'){
+        } else if (req.body.dizajniWebit === 'avanc') {
             return 500;
-        }else if(req.body.dizajniWebit === 'kompleks'){
+        } else if (req.body.dizajniWebit === 'kompleks') {
             return 1000;
-        }else{
+        } else {
             return 0
         }
     }
 
     const produktetNeWeb = () => {
-        if(req.body.produktetNeWeb === '50'){
+        if (req.body.produktetNeWeb === '50') {
             return 10;
-        }else if(req.body.produktetNeWeb === '300'){
+        } else if (req.body.produktetNeWeb === '300') {
             return 40;
-        }else if(req.body.produktetNeWeb === '301'){
+        } else if (req.body.produktetNeWeb === '301') {
             return 60;
-        }else{
+        } else {
             return 0
         }
     }
 
     const hedhjaProdukteveEcommerce = () => {
-        if(req.body.hedhjaProdukteveEcommerce === 'codeit'){
+        if (req.body.hedhjaProdukteveEcommerce === 'codeit') {
             return 200;
-        }else if(req.body.hedhjaProdukteveEcommerce === 'klienti'){
+        } else if (req.body.hedhjaProdukteveEcommerce === 'klienti') {
             return 400;
-        }else if(req.body.hedhjaProdukteveEcommerce === 'pala'){
+        } else if (req.body.hedhjaProdukteveEcommerce === 'pala') {
             return 600;
-        }else{
+        } else {
             return 0
         }
     }
 
     const platforma = () => {
-        if(req.body.platforma === 'wordpress'){
+        if (req.body.platforma === 'wordpress') {
             return 400;
-        }else if(req.body.platforma === 'shopify'){
+        } else if (req.body.platforma === 'shopify') {
             return 500;
-        }else if(req.body.platforma === 'prestashop'){
+        } else if (req.body.platforma === 'prestashop') {
             return 600;
-        }else if(req.body.platforma === 'magneto'){
+        } else if (req.body.platforma === 'magneto') {
             return 700;
-        }else{
+        } else {
             return 0
         }
     }
     const pagesa = () => {
-        if(req.body.pagesa === 'cash'){
+        if (req.body.pagesa === 'cash') {
             return 100;
-        }else if(req.body.pagesa === 'paypal'){
+        } else if (req.body.pagesa === 'paypal') {
             return 50;
-        }else if(req.body.pagesa === 'credit'){
+        } else if (req.body.pagesa === 'credit') {
             return 60;
-        }else if(req.body.pagesa === 'stripe'){
+        } else if (req.body.pagesa === 'stripe') {
             return 70;
-        }else{
+        } else {
             return 0
         }
     }
 
-   const gjuhetWeb = () => {
-        if(req.body.gjuhetWeb === 'nje'){
+    const gjuhetWeb = () => {
+        if (req.body.gjuhetWeb === 'nje') {
             return 20;
-        }else if(req.body.gjuhetWeb === 'shume'){
+        } else if (req.body.gjuhetWeb === 'shume') {
             return 80;
-        }else{
+        } else {
             return 0
         }
     }
     const hedhjaMaterialeveWeb = () => {
-        if(req.body.hedhjaMaterialeveWeb === 'klient'){
+        if (req.body.hedhjaMaterialeveWeb === 'klient') {
             return 20;
-        }else if(req.body.hedhjaMaterialeveWeb === 'codeIT'){
+        } else if (req.body.hedhjaMaterialeveWeb === 'codeIT') {
             return 50;
-        }else{
+        } else {
             return 0
         }
     }
 
     const faqetNeWeb = () => {
-        if(req.body.faqetNeWeb === 'pes'){
+        if (req.body.faqetNeWeb === 'pes') {
             return 20;
-        }else if(req.body.faqetNeWeb === 'gjasht'){
+        } else if (req.body.faqetNeWeb === 'gjasht') {
             return 30;
-        }else if(req.body.faqetNeWeb === '11'){
+        } else if (req.body.faqetNeWeb === '11') {
             return 50;
-        }else{
+        } else {
             return 0
         }
     }
 
     const hostDomain = () => {
-        if(req.body.hostDomain === 'skam'){
+        if (req.body.hostDomain === 'skam') {
             return 100;
-        }else if(req.body.hostDomain === 'kamhost'){
+        } else if (req.body.hostDomain === 'kamhost') {
             return 50;
-        }else if(req.body.hostDomain === 'kamdomain'){
+        } else if (req.body.hostDomain === 'kamdomain') {
             return 60;
-        }else if(req.body.hostDomain === 'tedyja'){
+        } else if (req.body.hostDomain === 'tedyja') {
             return 70;
-        }else{
+        } else {
             return 0
         }
     }
 
     const rendesiaSEO = () => {
-        if(req.body.rendesiaSEO === 'aspak'){
+        if (req.body.rendesiaSEO === 'aspak') {
             return 100;
-        }else if(req.body.rendesiaSEO === 'pak'){
+        } else if (req.body.rendesiaSEO === 'pak') {
             return 50;
-        }else if(req.body.rendesiaSEO === 'rendesishme'){
+        } else if (req.body.rendesiaSEO === 'rendesishme') {
             return 60;
-        }else if(req.body.rendesiaSEO === 'shum'){
+        } else if (req.body.rendesiaSEO === 'shum') {
             return 70;
-        }else{
+        } else {
             return 0
         }
     }
@@ -158,29 +210,29 @@ app.post('/market', async (req,res) => {
 
         let price = []
 
-        if(req.body.elementetNeWeb.includes('blog')){
+        if (req.body.elementetNeWeb.includes('blog')) {
             price.push(100)
-        }if(req.body.elementetNeWeb.includes('portofolio')){
+        } if (req.body.elementetNeWeb.includes('portofolio')) {
             price.push(50);
-        }if(req.body.elementetNeWeb.includes('rez-kalendar')){
+        } if (req.body.elementetNeWeb.includes('rez-kalendar')) {
             price.push(60)
-        }if(req.body.elementetNeWeb.includes('artikuj') ){
+        } if (req.body.elementetNeWeb.includes('artikuj')) {
             price.push(70)
-        }if(req.body.elementetNeWeb.includes('faq')){
+        } if (req.body.elementetNeWeb.includes('faq')) {
             price.push(50)
-        }if(req.body.elementetNeWeb.includes('livechat')){
+        } if (req.body.elementetNeWeb.includes('livechat')) {
             price.push(90)
-        }if(req.body.elementetNeWeb.includes('googlemap')){
+        } if (req.body.elementetNeWeb.includes('googlemap')) {
             price.push(100)
-        }if(req.body.elementetNeWeb.includes('prof-perdorues')){
+        } if (req.body.elementetNeWeb.includes('prof-perdorues')) {
             price.push(300)
-        }if(req.body.elementetNeWeb.includes('newsletter')){
+        } if (req.body.elementetNeWeb.includes('newsletter')) {
             price.push(20)
-        }if (price.length > 0){
+        } if (price.length > 0) {
 
-            return price.reduce((a,b) => a + b,0)
+            return price.reduce((a, b) => a + b, 0)
 
-        }else{
+        } else {
             return 0
         }
 
@@ -189,82 +241,82 @@ app.post('/market', async (req,res) => {
 
         let price = []
 
-        if(req.body.biznesitInevojitet.includes('emer')){
+        if (req.body.biznesitInevojitet.includes('emer')) {
             price.push(200)
-        }if(req.body.biznesitInevojitet.includes('logo')){
+        } if (req.body.biznesitInevojitet.includes('logo')) {
             price.push(300);
-        }if(req.body.biznesitInevojitet.includes('imazh-marke')){
+        } if (req.body.biznesitInevojitet.includes('imazh-marke')) {
             price.push(600)
-        }if(req.body.biznesitInevojitet.includes('tetreja') ){
+        } if (req.body.biznesitInevojitet.includes('tetreja')) {
             price.push(1100)
-        }if (price.length > 0){
+        } if (price.length > 0) {
 
-            return price.reduce((a,b) => a + b,0)
+            return price.reduce((a, b) => a + b, 0)
 
-        }else{
+        } else {
             return 0
         }
 
     }
 
     const frekuencaPostimeveMediaJaves = () => {
-        if(req.body.frekuencaPostimeveMediaJaves === '3'){
+        if (req.body.frekuencaPostimeveMediaJaves === '3') {
             return 100;
-        }else if(req.body.frekuencaPostimeveMediaJaves === '7'){
+        } else if (req.body.frekuencaPostimeveMediaJaves === '7') {
             return 50;
-        }else if(req.body.frekuencaPostimeveMediaJaves === '14'){
+        } else if (req.body.frekuencaPostimeveMediaJaves === '14') {
             return 60;
-        }else if(req.body.frekuencaPostimeveMediaJaves === '15'){
+        } else if (req.body.frekuencaPostimeveMediaJaves === '15') {
             return 70;
-        }else{
+        } else {
             return 0
         }
-}
-
-const setiFotografikNeMuaj = () => {
-    if(req.body.setiFotografikNeMuaj === '1here'){
-        return 50;
-    }else if(req.body.setiFotografikNeMuaj === '2here'){
-        return 100;
-    }else{
-        return 0
-    }
-}
-
-const  vendiPromovimit = () => {
-
-    let price = []
-
-    if(req.body.vendiPromovimit.includes('tv')){
-        price.push(200)
-    }if(req.body.vendiPromovimit.includes('radio')){
-        price.push(300);
-    }if(req.body.vendiPromovimit.includes('online')){
-        price.push(600)
-    }if(req.body.vendiPromovimit.includes('portale') ){
-        price.push(100)
-    }if(req.body.vendiPromovimit.includes('tegjitha') ){
-        price.push(1200)
-    }if (price.length > 0){
-
-        return price.reduce((a,b) => a + b,0)
-
-    }else{
-        return 0
     }
 
-}
-const markaRegjistruar = () => {
-    if(req.body.markaRegjistruar === 'Po'){
-        return 50;
-    }else if(req.body.markaRegjistruar === 'Jo'){
-        return 0;
-    }else{
-        return 0
+    const setiFotografikNeMuaj = () => {
+        if (req.body.setiFotografikNeMuaj === '1here') {
+            return 50;
+        } else if (req.body.setiFotografikNeMuaj === '2here') {
+            return 100;
+        } else {
+            return 0
+        }
     }
-}
-    try{
-        await market.set({price:  topologjia() + dizajniWebit() + produktetNeWeb() + hedhjaProdukteveEcommerce() + platforma() + pagesa() + gjuhetWeb() + hedhjaMaterialeveWeb() + faqetNeWeb() + hostDomain() + rendesiaSEO() + elementetNeWeb() + markaRegjistruar() + setiFotografikNeMuaj() + frekuencaPostimeveMediaJaves() + biznesitInevojitet() + vendiPromovimit()})
+
+    const vendiPromovimit = () => {
+
+        let price = []
+
+        if (req.body.vendiPromovimit.includes('tv')) {
+            price.push(200)
+        } if (req.body.vendiPromovimit.includes('radio')) {
+            price.push(300);
+        } if (req.body.vendiPromovimit.includes('online')) {
+            price.push(600)
+        } if (req.body.vendiPromovimit.includes('portale')) {
+            price.push(100)
+        } if (req.body.vendiPromovimit.includes('tegjitha')) {
+            price.push(1200)
+        } if (price.length > 0) {
+
+            return price.reduce((a, b) => a + b, 0)
+
+        } else {
+            return 0
+        }
+
+    }
+    const markaRegjistruar = () => {
+        if (req.body.markaRegjistruar === 'Po') {
+            return 50;
+        } else if (req.body.markaRegjistruar === 'Jo') {
+            return 0;
+        } else {
+            return 0
+        }
+    }
+    try {
+        await market.set({ price: topologjia() + dizajniWebit() + produktetNeWeb() + hedhjaProdukteveEcommerce() + platforma() + pagesa() + gjuhetWeb() + hedhjaMaterialeveWeb() + faqetNeWeb() + hostDomain() + rendesiaSEO() + elementetNeWeb() + markaRegjistruar() + setiFotografikNeMuaj() + frekuencaPostimeveMediaJaves() + biznesitInevojitet() + vendiPromovimit() })
         await market.save();
         const mailOptions = {
             from: req.body.email,
@@ -358,49 +410,49 @@ const markaRegjistruar = () => {
             </div>
             `,
         }
-        await transporter.sendMail(mailOptions,function(err,info){
+        await transporter.sendMail(mailOptions, function (err, info) {
 
-            if(err){
+            if (err) {
                 res.status(500).send({
                     success: false,
                     message: 'Something went wrong'
                 })
-            }else{
+            } else {
                 res.send({
                     success: true,
                     messagge: 'Thank you'
                 })
                 console.log('Thank you')
             }
-    console.log(market)
+            console.log(market)
         })
-        await transporter.sendMail(mailClient,function(err,info){
+        await transporter.sendMail(mailClient, function (err, info) {
 
-            if(err){
+            if (err) {
                 res.status(500).send({
                     success: false,
                     message: 'Something went wrong'
                 })
-            }else{
+            } else {
                 res.send({
                     success: true,
                     messagge: 'Thank you'
                 })
                 console.log('Thank you')
             }
-    console.log(market)
+            console.log(market)
         })
-    }catch(e){
+    } catch (e) {
         res.send(e)
     }
 
 })
 
-app.post('/app', async (req,res) => {
+app.post('/app', async (req, res) => {
 
     const app = new App(req.body)
 
-    try{
+    try {
         await app.save()
         res.send(app)
         console.log(app)
@@ -433,14 +485,14 @@ app.post('/app', async (req,res) => {
                 </div>
             `,
         }
-       await transporter.sendMail(mailOptions,function(err,info){
+        await transporter.sendMail(mailOptions, function (err, info) {
 
-            if(err){
+            if (err) {
                 res.status(500).send({
                     success: false,
                     message: 'Something went wrong'
                 })
-            }else{
+            } else {
                 res.send({
                     success: true,
                     messagge: 'Thank you'
@@ -449,150 +501,150 @@ app.post('/app', async (req,res) => {
             }
 
         })
-    }catch(e){
+    } catch (e) {
         res.send(e)
     }
 
 })
 
 
-app.post('/website', async (req,res) =>{
+app.post('/website', async (req, res) => {
 
     const posts = new Posts(req.body);
 
-    const topologjia = () =>{
-        if(req.body.topologjia === 'prezantues'){
+    const topologjia = () => {
+        if (req.body.topologjia === 'prezantues') {
             return 10;
-        }else if (req.body.topologjia === 'ecommerce'){
+        } else if (req.body.topologjia === 'ecommerce') {
             return 2003;
-        }else if (req.body.topologjia === 'booking'){
+        } else if (req.body.topologjia === 'booking') {
             return 2100;
-        }else if (req.body.topologjia === 'portale'){
+        } else if (req.body.topologjia === 'portale') {
             return 2120;
-        }else if (req.body.topologjia === 'delivery'){
+        } else if (req.body.topologjia === 'delivery') {
             return 210;
-        }else{
+        } else {
             return 0;
         }
     }
     const dizajniWebit = () => {
-        if(req.body.dizajniWebit === 'thjeshte'){
+        if (req.body.dizajniWebit === 'thjeshte') {
             return 300;
-        }else if(req.body.dizajniWebit === 'avanc'){
+        } else if (req.body.dizajniWebit === 'avanc') {
             return 500;
-        }else if(req.body.dizajniWebit === 'kompleks'){
+        } else if (req.body.dizajniWebit === 'kompleks') {
             return 1000;
-        }else{
+        } else {
             return 0
         }
     }
 
     const produktetNeWeb = () => {
-        if(req.body.produktetNeWeb === '50'){
+        if (req.body.produktetNeWeb === '50') {
             return 20;
-        }else if(req.body.produktetNeWeb === '300'){
+        } else if (req.body.produktetNeWeb === '300') {
             return 40;
-        }else if(req.body.produktetNeWeb === '301'){
+        } else if (req.body.produktetNeWeb === '301') {
             return 60;
-        }else{
+        } else {
             return 0
         }
     }
 
     const hedhjaProdukteveEcommerce = () => {
-        if(req.body.hedhjaProdukteveEcommerce === 'codeit'){
+        if (req.body.hedhjaProdukteveEcommerce === 'codeit') {
             return 200;
-        }else if(req.body.hedhjaProdukteveEcommerce === 'klienti'){
+        } else if (req.body.hedhjaProdukteveEcommerce === 'klienti') {
             return 400;
-        }else if(req.body.hedhjaProdukteveEcommerce === 'pala'){
+        } else if (req.body.hedhjaProdukteveEcommerce === 'pala') {
             return 600;
-        }else{
+        } else {
             return 0
         }
     }
 
     const platforma = () => {
-        if(req.body.platforma === 'wordpress'){
+        if (req.body.platforma === 'wordpress') {
             return 400;
-        }else if(req.body.platforma === 'shopify'){
+        } else if (req.body.platforma === 'shopify') {
             return 500;
-        }else if(req.body.platforma === 'prestashop'){
+        } else if (req.body.platforma === 'prestashop') {
             return 600;
-        }else if(req.body.platforma === 'magneto'){
+        } else if (req.body.platforma === 'magneto') {
             return 700;
-        }else{
+        } else {
             return 0
         }
     }
     const pagesa = () => {
-        if(req.body.pagesa === 'cash'){
+        if (req.body.pagesa === 'cash') {
             return 100;
-        }else if(req.body.pagesa === 'paypal'){
+        } else if (req.body.pagesa === 'paypal') {
             return 50;
-        }else if(req.body.pagesa === 'credit'){
+        } else if (req.body.pagesa === 'credit') {
             return 60;
-        }else if(req.body.pagesa === 'stripe'){
+        } else if (req.body.pagesa === 'stripe') {
             return 70;
-        }else{
+        } else {
             return 0
         }
     }
 
-   const gjuhetWeb = () => {
-        if(req.body.gjuhetWeb === 'nje'){
+    const gjuhetWeb = () => {
+        if (req.body.gjuhetWeb === 'nje') {
             return 20;
-        }else if(req.body.gjuhetWeb === 'shume'){
+        } else if (req.body.gjuhetWeb === 'shume') {
             return 80;
-        }else{
+        } else {
             return 0
         }
     }
     const hedhjaMaterialeveWeb = () => {
-        if(req.body.hedhjaMaterialeveWeb === 'klient'){
+        if (req.body.hedhjaMaterialeveWeb === 'klient') {
             return 20;
-        }else if(req.body.hedhjaMaterialeveWeb === 'codeIT'){
+        } else if (req.body.hedhjaMaterialeveWeb === 'codeIT') {
             return 50;
-        }else{
+        } else {
             return 0
         }
     }
 
     const faqetNeWeb = () => {
-        if(req.body.faqetNeWeb === 'pes'){
+        if (req.body.faqetNeWeb === 'pes') {
             return 20;
-        }else if(req.body.faqetNeWeb === 'gjasht'){
+        } else if (req.body.faqetNeWeb === 'gjasht') {
             return 30;
-        }else if(req.body.faqetNeWeb === '11'){
+        } else if (req.body.faqetNeWeb === '11') {
             return 50;
-        }else{
+        } else {
             return 0
         }
     }
 
     const hostDomain = () => {
-        if(req.body.hostDomain === 'skam'){
+        if (req.body.hostDomain === 'skam') {
             return 100;
-        }else if(req.body.hostDomain === 'kamhost'){
+        } else if (req.body.hostDomain === 'kamhost') {
             return 50;
-        }else if(req.body.hostDomain === 'kamdomain'){
+        } else if (req.body.hostDomain === 'kamdomain') {
             return 60;
-        }else if(req.body.hostDomain === 'tedyja'){
+        } else if (req.body.hostDomain === 'tedyja') {
             return 70;
-        }else{
+        } else {
             return 0
         }
     }
 
     const rendesiaSEO = () => {
-        if(req.body.rendesiaSEO === 'aspak'){
+        if (req.body.rendesiaSEO === 'aspak') {
             return 100;
-        }else if(req.body.rendesiaSEO === 'pak'){
+        } else if (req.body.rendesiaSEO === 'pak') {
             return 50;
-        }else if(req.body.rendesiaSEO === 'rendesishme'){
+        } else if (req.body.rendesiaSEO === 'rendesishme') {
             return 60;
-        }else if(req.body.rendesiaSEO === 'shum'){
+        } else if (req.body.rendesiaSEO === 'shum') {
             return 70;
-        }else{
+        } else {
             return 0
         }
     }
@@ -602,29 +654,29 @@ app.post('/website', async (req,res) =>{
 
         let price = []
 
-        if(req.body.elementetNeWeb.includes('blog')){
+        if (req.body.elementetNeWeb.includes('blog')) {
             price.push(100)
-        }if(req.body.elementetNeWeb.includes('portofolio')){
+        } if (req.body.elementetNeWeb.includes('portofolio')) {
             price.push(50);
-        }if(req.body.elementetNeWeb.includes('rez-kalendar')){
+        } if (req.body.elementetNeWeb.includes('rez-kalendar')) {
             price.push(60)
-        }if(req.body.elementetNeWeb.includes('artikuj') ){
+        } if (req.body.elementetNeWeb.includes('artikuj')) {
             price.push(70)
-        }if(req.body.elementetNeWeb.includes('faq')){
+        } if (req.body.elementetNeWeb.includes('faq')) {
             price.push(50)
-        }if(req.body.elementetNeWeb.includes('livechat')){
+        } if (req.body.elementetNeWeb.includes('livechat')) {
             price.push(90)
-        }if(req.body.elementetNeWeb.includes('googlemap')){
+        } if (req.body.elementetNeWeb.includes('googlemap')) {
             price.push(100)
-        }if(req.body.elementetNeWeb.includes('prof-perdorues')){
+        } if (req.body.elementetNeWeb.includes('prof-perdorues')) {
             price.push(300)
-        }if(req.body.elementetNeWeb.includes('newsletter')){
+        } if (req.body.elementetNeWeb.includes('newsletter')) {
             price.push(20)
-        }if (price.length > 0){
+        } if (price.length > 0) {
 
-            return price.reduce((a,b) => a + b,0)
+            return price.reduce((a, b) => a + b, 0)
 
-        }else{
+        } else {
             return 0
         }
 
@@ -633,90 +685,90 @@ app.post('/website', async (req,res) =>{
 
         let price = []
 
-        if(req.body.biznesitInevojitet.includes('emer')){
+        if (req.body.biznesitInevojitet.includes('emer')) {
             price.push(200)
-        }if(req.body.biznesitInevojitet.includes('logo')){
+        } if (req.body.biznesitInevojitet.includes('logo')) {
             price.push(300);
-        }if(req.body.biznesitInevojitet.includes('imazh-marke')){
+        } if (req.body.biznesitInevojitet.includes('imazh-marke')) {
             price.push(600)
-        }if(req.body.biznesitInevojitet.includes('tetreja') ){
+        } if (req.body.biznesitInevojitet.includes('tetreja')) {
             price.push(1100)
-        }if (price.length > 0){
+        } if (price.length > 0) {
 
-            return price.reduce((a,b) => a + b,0)
+            return price.reduce((a, b) => a + b, 0)
 
-        }else{
+        } else {
             return 0
         }
 
     }
 
     const frekuencaPostimeveMediaJaves = () => {
-        if(req.body.frekuencaPostimeveMediaJaves === '3'){
+        if (req.body.frekuencaPostimeveMediaJaves === '3') {
             return 100;
-        }else if(req.body.frekuencaPostimeveMediaJaves === '7'){
+        } else if (req.body.frekuencaPostimeveMediaJaves === '7') {
             return 50;
-        }else if(req.body.frekuencaPostimeveMediaJaves === '14'){
+        } else if (req.body.frekuencaPostimeveMediaJaves === '14') {
             return 60;
-        }else if(req.body.frekuencaPostimeveMediaJaves === '15'){
+        } else if (req.body.frekuencaPostimeveMediaJaves === '15') {
             return 70;
-        }else{
+        } else {
             return 0
         }
-}
-
-const setiFotografikNeMuaj = () => {
-    if(req.body.setiFotografikNeMuaj === '1here'){
-        return 50;
-    }else if(req.body.setiFotografikNeMuaj === '2here'){
-        return 100;
-    }else{
-        return 0
-    }
-}
-
-const  vendiPromovimit = () => {
-
-    let price = []
-
-    if(req.body.vendiPromovimit.includes('tv')){
-        price.push(200)
-    }if(req.body.vendiPromovimit.includes('radio')){
-        price.push(300);
-    }if(req.body.vendiPromovimit.includes('online')){
-        price.push(600)
-    }if(req.body.vendiPromovimit.includes('portale') ){
-        price.push(100)
-    }if(req.body.vendiPromovimit.includes('tegjitha') ){
-        price.push(1200)
-    }if (price.length > 0){
-
-        return price.reduce((a,b) => a + b,0)
-
-    }else{
-        return 0
     }
 
-}
-const markaRegjistruar = () => {
-    if(req.body.markaRegjistruar === 'Po'){
-        return 50;
-    }else if(req.body.markaRegjistruar === 'Jo'){
-        return 0;
-    }else{
-        return 0
+    const setiFotografikNeMuaj = () => {
+        if (req.body.setiFotografikNeMuaj === '1here') {
+            return 50;
+        } else if (req.body.setiFotografikNeMuaj === '2here') {
+            return 100;
+        } else {
+            return 0
+        }
     }
-}
 
-    try{
-         await posts.set({price:  topologjia() + dizajniWebit() + produktetNeWeb() + hedhjaProdukteveEcommerce() + platforma() + pagesa() + gjuhetWeb() + hedhjaMaterialeveWeb() + faqetNeWeb() + hostDomain() + rendesiaSEO() + elementetNeWeb() + markaRegjistruar() + setiFotografikNeMuaj() + frekuencaPostimeveMediaJaves() + biznesitInevojitet() + vendiPromovimit()})
+    const vendiPromovimit = () => {
+
+        let price = []
+
+        if (req.body.vendiPromovimit.includes('tv')) {
+            price.push(200)
+        } if (req.body.vendiPromovimit.includes('radio')) {
+            price.push(300);
+        } if (req.body.vendiPromovimit.includes('online')) {
+            price.push(600)
+        } if (req.body.vendiPromovimit.includes('portale')) {
+            price.push(100)
+        } if (req.body.vendiPromovimit.includes('tegjitha')) {
+            price.push(1200)
+        } if (price.length > 0) {
+
+            return price.reduce((a, b) => a + b, 0)
+
+        } else {
+            return 0
+        }
+
+    }
+    const markaRegjistruar = () => {
+        if (req.body.markaRegjistruar === 'Po') {
+            return 50;
+        } else if (req.body.markaRegjistruar === 'Jo') {
+            return 0;
+        } else {
+            return 0
+        }
+    }
+
+    try {
+        await posts.set({ price: topologjia() + dizajniWebit() + produktetNeWeb() + hedhjaProdukteveEcommerce() + platforma() + pagesa() + gjuhetWeb() + hedhjaMaterialeveWeb() + faqetNeWeb() + hostDomain() + rendesiaSEO() + elementetNeWeb() + markaRegjistruar() + setiFotografikNeMuaj() + frekuencaPostimeveMediaJaves() + biznesitInevojitet() + vendiPromovimit() })
         await posts.save();
         res.send(posts);
 
         const mailOptions = {
 
             from: req.body.email,
-            to: process.env.email ,
+            to: process.env.email,
             subject: 'Website',
             html: `
             <table>
@@ -806,45 +858,45 @@ const markaRegjistruar = () => {
             </div>
             `,
         }
-        await transporter.sendMail(mailOptions,function(err,info){
+        await transporter.sendMail(mailOptions, function (err, info) {
 
-            if(err){
+            if (err) {
                 res.status(500).send({
                     success: false,
                     message: 'Something went wrong'
                 })
-            }else{
+            } else {
                 res.send({
                     success: true,
                     messagge: 'Thank you'
                 })
                 console.log('Thank you')
             }
-    console.log(posts)
+            console.log(posts)
         })
-        await transporter.sendMail(mailClient,function(err,info){
+        await transporter.sendMail(mailClient, function (err, info) {
 
-            if(err){
+            if (err) {
                 res.status(500).send({
                     success: false,
                     message: 'Something went wrong'
                 })
-            }else{
+            } else {
                 res.send({
                     success: true,
                     messagge: 'Thank youUUUU'
                 })
                 console.log('Thank you')
             }
-    console.log(posts)
+            console.log(posts)
         })
-    }catch(e){
+    } catch (e) {
         res.send(e)
     }
 
 })
 
-app.listen(port , () =>{
+app.listen(port, () => {
 
     console.log(port)
 
