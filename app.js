@@ -429,7 +429,7 @@ app.post('/market', async (req, res) => {
             <h3 style="text-align:center;color:dodgerblue">Website</h3>
             <div style="display:flex">
             <p><b>Topologjia:</b></p>
-            <p>${req.body.topologjia}</p>
+            <p>${req.body.topologjia === 'reference' ? `Web Reference: ${req.body.linkRefer}` : req.body.topologjia}</p>
             </div>
             <div style="display:flex">
             <p><b>Dizajni i Webit:</b></p>
